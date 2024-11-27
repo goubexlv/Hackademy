@@ -1,12 +1,13 @@
 {
     "version": 2,
     "builds": [
-      { "src": "manage.py", "use": "@vercel/python" },
-      { "src": "hackademy/static/**/*", "use": "@vercel/static" }
+      { "src": "hackademy/wsgi.py", 
+      "use": "@vercel/python", 
+      "config" : {"maxLanbdaSize": "15mb" , "runtime": "python3"}    
+    }
     ],
     "routes": [
-      { "src": "/static/(.*)", "dest": "static/$1" },
-      { "src": "/(.*)", "dest": "manage.py" }
+      { "src": "/(.*)", "dest": "hackademy/wsgi.py" }
     ]
   }
   
